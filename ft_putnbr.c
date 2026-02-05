@@ -10,21 +10,45 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_putnbr(int n, int fd)
+#include <unistd.h>
+#include <stdio.h>
+
+static int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_putnbr(int n)
 {
 	unsigned int	nb_pos;
+	int				i;
 
+	i = 0;
 	if (n < 0)
 	{
-		ft_putchar('-', fd);
+		ft_putchar('-');
 		nb_pos = n * (-1);
+		i++;
 	}
 	else
 		nb_pos = n;
 	if (nb_pos > 9)
 	{
-		ft_putnbr(nb_pos / 10, fd);
+		i = i + ft_putnbr(nb_pos / 10);
 	}
-	ft_putchar(nb_pos % 10 + '0', fd);
-    return(¿¿¿len???)
+	i = i + ft_putchar(nb_pos % 10 + '0');
+    return(i);
 }
+/*
+int main (void)
+{
+    int num;
+    int i;
+
+    num = -235;
+    i = ft_putnbr(num);
+    printf("\n");
+    printf("Original: %d\n", num);
+    printf("Número de carácteres: %d\n", i);
+}*/

@@ -14,8 +14,8 @@
 // 
 int ft_printpunt (void *)
 {
-    int i
-    unsigned long pnt
+    int i;
+    unsigned long pnt;
 
     
     

@@ -23,7 +23,6 @@ int ft_printf(char const *s, ...)
     i = 0;
     count = 0;
     va_start(vargs, s)
-    
     if (!s)
         return(-1);
     while (s[i])
@@ -40,17 +39,17 @@ int ft_printf(char const *s, ...)
             else (s[i + 1] = 's');
                 count = count + ft_printstring(va_arg(vargs, char *));  
             else (s[i + 1] = 'p');
-                count = count + ft_printpunt(va_arg(vargs, void *); /*void para que sea indiferente el tipo de dato al que apunte el puntero*/
+                count = count + ft_printpunt(va_arg(vargs, void *)); /*void para que sea indiferente el tipo de dato al que apunte el puntero*/
             else (s[i + 1] = 'd');
-                
-            else (s[i + 1] = 'i');
-            
-            else (s[i + 1] = 'u');
                 count = count + ft_putnbr(va_arg(vargs,int));
+            else (s[i + 1] = 'i');
+                count = count +          (va_arg(vargs,int));
+            else (s[i + 1] = 'u');
+                count = count +         (va_arg(vargs,unsigned int));
             else (s[i + 1] = 'x');
-                count = count + ft_hexa(va_arg(vargs,unsigned int)); 
+                count = count + ft_hexa(va_arg(vargs,unsigned long)); 
             else (s[i + 1] = 'X');
-                count = count + ft_HEXA(va_arg(vargs,unsigned int));
+                count = count + ft_HEXA(va_arg(vargs,unsigned long));
             else (s[i + 1] = '%');
         }
         i++;

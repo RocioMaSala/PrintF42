@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static int  ft_printstring (char *s)
+int  ft_printstring (char *s)
 {
     int i;
 
