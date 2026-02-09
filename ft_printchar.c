@@ -6,14 +6,14 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 14:16:40 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/03 16:28:07 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/02/09 18:11:35 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
-static int ft_printchar (int c)
+int	ft_printchar(int c)
 {
-    write(1,&c,1);
-    return (1);
+	write(1, &c, 1);
+	return (1);
 }

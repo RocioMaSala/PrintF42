@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstring.c                                   :+:      :+:    :+:   */
+/*   ft_uint.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 16:28:26 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/09 18:35:50 by romarti2         ###   ########.fr       */
+/*   Created: 2026/02/09 12:27:20 by romarti2          #+#    #+#             */
+/*   Updated: 2026/02/09 18:13:35 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printstring(char *s)
+static int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_uint(unsigned int n)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
+	if (n > 9)
 	{
-		write(1, "(null)", 6);
-		return (6);
+		i = i + ft_uint(n / 10);
 	}
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
+	i = i + ft_putchar(n % 10 + '0');
 	return (i);
 }

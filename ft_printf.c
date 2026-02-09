@@ -6,65 +6,73 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 11:09:46 by marvin            #+#    #+#             */
-/*   Updated: 2026/02/03 18:32:35 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/02/09 18:33:01 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h"
-#include <stdarg.h>
+#include "ft_printf.h"
 
-int ft_printf(char const *s, ...)
+int	ft_format(va_list vargs, char s)
 {
-    va_list vargs;
-    size_t  i;
-    int     count;
+	int	count;
 
-    i = 0;
-    count = 0;
-    va_start(vargs, s)
-    if (!s)
-        return(-1);
-    while (s[i])
-    {
-        if s[i] != '%'
-        {
-            write (1,&s[i],1);            
-            count++;
-        }
-        else
-        {
-            if (s[i + 1] = 'c');
-               count = count + ft_printchar(va_arg(vargs, int ));        
-            else (s[i + 1] = 's');
-                count = count + ft_printstring(va_arg(vargs, char *));  
-            else (s[i + 1] = 'p');
-                count = count + ft_printpunt(va_arg(vargs, void *)); /*void para que sea indiferente el tipo de dato al que apunte el puntero*/
-            else (s[i + 1] = 'd');
-                count = count + ft_putnbr(va_arg(vargs,int));
-            else (s[i + 1] = 'i');
-                count = count +          (va_arg(vargs,int));
-            else (s[i + 1] = 'u');
-                count = count +         (va_arg(vargs,unsigned int));
-            else (s[i + 1] = 'x');
-                count = count + ft_hexa(va_arg(vargs,unsigned long)); 
-            else (s[i + 1] = 'X');
-                count = count + ft_HEXA(va_arg(vargs,unsigned long));
-            else (s[i + 1] = '%');
-        }
-        i++;
-    }
-    va_end(vargs);
-    return (count);
-}
-    
-    va_start (vargs, s)
-
-    va_arg (vargs, ...) ...... aquí pondremos lo que queremos que ocurra con nuestros parámetros variádicos
-
-    va_end(vargs)
-    return (0);
-
+	count = 0;
+	if (s == 'c')
+		count = count + ft_printchar(va_arg(vargs, int));
+	else if (s == 's')
+		count = count + ft_printstring(va_arg(vargs, char *));
+	else if (s == 'p')
+		count = count + ft_printpunt(va_arg(vargs, void *));
+	else if (s == 'd')
+		count = count + ft_putnbr(va_arg(vargs, int));
+	else if (s == 'i')
+		count = count + ft_putnbr(va_arg(vargs, int));
+	else if (s == 'u')
+		count = count + ft_uint(va_arg(vargs, unsigned int));
+	else if (s == 'x')
+		count = count + ft_hexa(va_arg(vargs, unsigned int));
+	else if (s == 'X')
+		count = count + ft_hexamay(va_arg(vargs, unsigned int));
+	else if (s == '%')
+		count = count + ft_printchar('%');
+	return (count);
 }
 
+int	ft_printf(char const *s, ...)
+{
+	va_list	vargs;
+	size_t	i;
+	int		count;
 
+	if (!s)
+		return (-1);
+	va_start(vargs, s);
+	i = 0;
+	count = 0;
+	while (s[i])
+	{
+		if (s[i] == '%')
+		{
+			if (!s[i + 1])
+				return (-1);
+			count += ft_format(vargs, s[++i]);
+		}
+		else
+		{
+			count += write(1, &s[i], 1);
+		}
+		i++;
+	}
+	va_end(vargs);
+	return (count);
+}
+/*
+int main (void)
+{
+//	char *pnt;
+
+//	pnt = NULL;
+	ft_printf("%d\n",ft_printf(" NULL %s NULL ", "NULL"));
+	printf("%d",printf(" NULL %s NULL ", "NULL"));
+	return (0);
+}*/

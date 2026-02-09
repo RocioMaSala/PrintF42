@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstring.c                                   :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 16:28:26 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/09 18:35:50 by romarti2         ###   ########.fr       */
+/*   Created: 2026/02/09 13:53:18 by romarti2          #+#    #+#             */
+/*   Updated: 2026/02/09 18:12:01 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_printstring(char *s)
-{
-	int	i;
+# include <stdio.h>
+# include <unistd.h>
 
-	i = 0;
-	if (!s)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
-	return (i);
-}
+int	ft_hexa(unsigned long num);
+
+int	ft_hexamay(unsigned long num);
+int	ft_printchar(int c);
+int	ft_printf(char const *s, ...);
+int	ft_printpunt(void *ptr);
+int	ft_printstring(char *s);
+int	ft_putnbr(int n);
+int	ft_uint(unsigned int n);
+
+#endif
