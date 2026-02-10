@@ -6,7 +6,7 @@
 #    By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/16 11:54:06 by romarti2          #+#    #+#              #
-#    Updated: 2026/02/09 18:22:54 by romarti2         ###   ########.fr        #
+#    Updated: 2026/02/10 14:02:08 by romarti2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC = 	ft_hexa.c\
 		ft_hexamay.c\
 		ft_printf.c\
 		ft_printstring.c\
-		ft_uint.c
+		ft_uint.c\
 
 
 OBJ = $(SRC:.c=.o)

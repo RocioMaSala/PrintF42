@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 11:09:46 by marvin            #+#    #+#             */
-/*   Updated: 2026/02/09 18:33:01 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/02/10 14:08:24 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ int	ft_format(va_list vargs, char s)
 
 	count = 0;
 	if (s == 'c')
-		count = count + ft_printchar(va_arg(vargs, int));
+		count += ft_printchar(va_arg(vargs, int));
 	else if (s == 's')
-		count = count + ft_printstring(va_arg(vargs, char *));
+		count += ft_printstring(va_arg(vargs, char *));
 	else if (s == 'p')
-		count = count + ft_printpunt(va_arg(vargs, void *));
+		count += ft_printpunt(va_arg(vargs, void *));
 	else if (s == 'd')
-		count = count + ft_putnbr(va_arg(vargs, int));
+		count += ft_putnbr(va_arg(vargs, int));
 	else if (s == 'i')
-		count = count + ft_putnbr(va_arg(vargs, int));
+		count += ft_putnbr(va_arg(vargs, int));
 	else if (s == 'u')
-		count = count + ft_uint(va_arg(vargs, unsigned int));
+		count += ft_uint(va_arg(vargs, unsigned int));
 	else if (s == 'x')
-		count = count + ft_hexa(va_arg(vargs, unsigned int));
+		count += ft_hexa(va_arg(vargs, unsigned int));
 	else if (s == 'X')
-		count = count + ft_hexamay(va_arg(vargs, unsigned int));
+		count += ft_hexamay(va_arg(vargs, unsigned int));
 	else if (s == '%')
-		count = count + ft_printchar('%');
+		count += ft_printchar('%');
 	return (count);
 }
 
